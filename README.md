@@ -1,13 +1,5 @@
 # sfalchemy
 
-## Reverse Models
-
-- https://docs.snowflake.com/ja/user-guide/admin-account-identifier.html
-
-~~~bash
-env $(cat .env|xargs) ./inspect.bash
-~~~
-
 ## dependancies
 
 - https://github.com/shrinivdeshmukh/sqlalchemy-modelgen
