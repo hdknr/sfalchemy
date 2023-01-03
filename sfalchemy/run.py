@@ -21,12 +21,13 @@ def main(ctx, env_file):
 
 @main.command()
 @click.argument("filename")
+@click.option("--url_name", "-u", default="DB_URL")
 @click.pass_context
-def query(ctx, filename):
+def query(ctx, filename, url_name):
     sql = open(filename).read()
     env = ctx.obj["env"]
 
-    engine = create_engine(env.str("DB_URL"))
+    engine = create_engine(env.str(url_name))
     try:
         connection = engine.connect()
         rs = connection.execute(sql)
@@ -40,12 +41,13 @@ def query(ctx, filename):
 
 @main.command()
 @click.argument("filename")
+@click.option("--url_name", "-u", default="DB_URL")
 @click.pass_context
-def query_df(ctx, filename):
+def query_df(ctx, filename, url_name):
     sql = open(filename).read()
     env = ctx.obj["env"]
 
-    engine = create_engine(env.str("DB_URL"))
+    engine = create_engine(env.str(url_name))
     connection = engine.connect()
     try:
         df = pd.read_sql_query(sql, engine)
