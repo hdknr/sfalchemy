@@ -8,6 +8,10 @@
 env $(cat .env|xargs) ./inspect.bash
 ~~~
 
+## dependancies
+
+- https://github.com/shrinivdeshmukh/sqlalchemy-modelgen
+- https://github.com/snowflakedb/snowflake-sqlalchemy
 
 ## reference
 
