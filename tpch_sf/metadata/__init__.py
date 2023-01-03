@@ -1,2 +1,3 @@
+from models.models import metadata as models_metadata
 
-metadata = []
+metadata = [models_metadata]
