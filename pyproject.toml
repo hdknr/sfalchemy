@@ -6,7 +6,8 @@ authors = ["user.name <gmail@hdknr.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.11"
+python = "^3.9"
+alchemy-modelgen = "^0.1.6.1"
 
 
 [build-system]
