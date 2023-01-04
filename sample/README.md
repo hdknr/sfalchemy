@@ -29,10 +29,32 @@ modelgen migrate upgrade head -p $MYSQL_TICKIT_URL
 ~~~
 
 ~~~sql
- select * from alembic_version;
+select * from alembic_version;
+
 +--------------+
 | version_num  |
 +--------------+
 | a82b89ad4982 |
 +--------------+
+~~~
+
+## Modify schema
+
+~~~bash
+modelgen migrate revision --autogenerate -m "add memo to t_category" -p  $MYSQL_TICKIT_URL
+modelgen migrate upgrade head -p $MYSQL_TICKIT_URL
+~~~
+
+~~~sql
+desc category;
+
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| catid    | smallint     | NO   |     | NULL    |       |
+| catgroup | varchar(10)  | YES  |     | NULL    |       |
+| catname  | varchar(10)  | YES  |     | NULL    |       |
+| catdesc  | varchar(50)  | YES  |     | NULL    |       |
+| memo     | varchar(100) | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
 ~~~

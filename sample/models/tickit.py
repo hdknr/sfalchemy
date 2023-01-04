@@ -24,6 +24,7 @@ t_category = Table(
     Column("catgroup", String(10)),
     Column("catname", String(10)),
     Column("catdesc", String(50)),
+    Column("memo", String(100)),
 )
 
 
