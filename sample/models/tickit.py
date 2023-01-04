@@ -24,7 +24,6 @@ t_category = Table(
     Column("catgroup", String(10)),
     Column("catname", String(10)),
     Column("catdesc", String(50)),
-    schema="tickit",
 )
 
 
@@ -39,7 +38,6 @@ t_date = Table(
     Column("qtr", CHAR(5), nullable=False),
     Column("year", SmallInteger, nullable=False),
     Column("holiday", Boolean, server_default=text("false")),
-    schema="tickit",
 )
 
 
@@ -52,7 +50,6 @@ t_event = Table(
     Column("dateid", SmallInteger, nullable=False),
     Column("eventname", String(200)),
     Column("starttime", DateTime),
-    schema="tickit",
 )
 
 
@@ -67,7 +64,6 @@ t_listing = Table(
     Column("priceperticket", Numeric(8, 2)),
     Column("totalprice", Numeric(8, 2)),
     Column("listtime", DateTime),
-    schema="tickit",
 )
 
 
@@ -84,7 +80,6 @@ t_sales = Table(
     Column("pricepaid", Numeric(8, 2)),
     Column("commission", Numeric(8, 2)),
     Column("saletime", DateTime),
-    schema="tickit",
 )
 
 
@@ -109,7 +104,6 @@ t_users = Table(
     Column("likevegas", Boolean),
     Column("likebroadway", Boolean),
     Column("likemusicals", Boolean),
-    schema="tickit",
 )
 
 
@@ -121,5 +115,4 @@ t_venue = Table(
     Column("venuecity", String(30)),
     Column("venuestate", CHAR(2)),
     Column("venueseats", Integer),
-    schema="tickit",
 )
