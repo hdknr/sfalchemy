@@ -7,6 +7,7 @@
 - https://github.com/pandas-dev/pandas
 - https://github.com/pallets/click
 - https://github.com/joke2k/django-environ
+- https://github.com/sqlalchemy-redshift/sqlalchemy-redshift
 
 ## reference
 
