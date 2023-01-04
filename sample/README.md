@@ -1,4 +1,4 @@
-# SNOWFLAKE_SAMPLE_DATA 
+# Database migration sample
 
 ## Schema 
 
