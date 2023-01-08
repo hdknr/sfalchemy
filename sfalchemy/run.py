@@ -42,16 +42,18 @@ def query(ctx, filename, url_name):
 @main.command()
 @click.argument("filename")
 @click.option("--url_name", "-u", default="DB_URL")
+@click.option("--out", "-o", default="/tmp")
 @click.pass_context
-def query_df(ctx, filename, url_name):
+def query_df(ctx, filename, url_name, out):
     sql = open(filename).read()
     env = ctx.obj["env"]
-
+    name = filename.replace("/", "_")
+    dst = Path(out) / f"{name}.tsv"
     engine = create_engine(env.str(url_name))
     connection = engine.connect()
     try:
         df = pd.read_sql_query(sql, engine)
-        print(df)
+        df.to_csv(str(dst), index=False, sep="\t")
     finally:
         engine.dispose()
 
