@@ -302,6 +302,20 @@ docs = ["furo (>=2021.8.17b43,<2021.9.0)", "sphinx (>=3.5.0)", "sphinx-notfound-
 testing = ["coverage[toml] (>=5.0a4)", "pytest (>=4.6.11)"]
 
 [[package]]
+name = "feather-format"
+version = "0.4.1"
+description = "Simple wrapper library to the Apache Arrow-based Feather File Format"
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "feather-format-0.4.1.tar.gz", hash = "sha256:45f67e3745d394d4f160ca6d636bbfd4f8b68d01199dc1649b6e487d3e878903"},
+]
+
+[package.dependencies]
+pyarrow = ">=0.4.0"
+
+[[package]]
 name = "filelock"
 version = "3.9.0"
 description = "A platform independent file lock."
@@ -1367,4 +1381,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "52b9454e0444ee75fb12cddce41bdc9306c858ce644ab0a44e26058b9606bf95"
+content-hash = "9ecb09cbc325fc9f9d63f1eb3bf8dd9393fb93dc6be5c4a34bc2a3cb1dd002f9"

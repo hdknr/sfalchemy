@@ -12,6 +12,7 @@ click = "^8.1.3"
 django-environ = "^0.9.0"
 pandas = "^1.5.2"
 snowflake-connector-python = {extras = ["pandas"], version = "^2.9.0"}
+feather-format = "^0.4.1"
 
 
 [tool.poetry.group.dev.dependencies]
