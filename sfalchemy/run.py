@@ -39,21 +39,34 @@ def query(ctx, filename, url_name):
         engine.dispose()
 
 
+RENDERER = dict(
+    tsv=dict(func="to_csv", params=dict(index=False, sep="\t")),
+    parquet=dict(func="to_parquet", params=dict(engine="auto")),
+    # https://arrow.apache.org/docs/python/feather.html
+    feather=dict(func="to_feather", params=dict()),
+)
+
+
 @main.command()
 @click.argument("filename")
 @click.option("--url_name", "-u", default="DB_URL")
 @click.option("--out", "-o", default="/tmp")
+@click.option("--format", "-f", type=click.Choice(RENDERER.keys()), default="tsv")
 @click.pass_context
-def query_df(ctx, filename, url_name, out):
+def query_df(ctx, filename, url_name, out, format):
     sql = open(filename).read()
     env = ctx.obj["env"]
     name = filename.replace("/", "_")
-    dst = Path(out) / f"{name}.tsv"
+
+    render = RENDERER[format]
+    dst = Path(out) / f"{name}.{format}"
     engine = create_engine(env.str(url_name))
     connection = engine.connect()
     try:
         df = pd.read_sql_query(sql, engine)
-        df.to_csv(str(dst), index=False, sep="\t")
+        getattr(df, render["func"])(dst, **render["params"])
+    except Exception as e:
+        print(e)
     finally:
         engine.dispose()
 
