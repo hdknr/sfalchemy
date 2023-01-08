@@ -44,6 +44,7 @@ RENDERER = dict(
     parquet=dict(func="to_parquet", params=dict(engine="auto")),
     # https://arrow.apache.org/docs/python/feather.html
     feather=dict(func="to_feather", params=dict()),
+    json=dict(func="to_json", params=dict(orient="records", lines=True)),
 )
 
 
