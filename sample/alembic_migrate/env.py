@@ -2,9 +2,16 @@ from logging.config import fileConfig
 from os import getenv
 
 from alembic import context
+from alembic.ddl.impl import DefaultImpl
+
 from dotenv import load_dotenv
 from metadata import metadata
 from sqlalchemy import engine_from_config, pool
+
+
+class SnowflakeImpl(DefaultImpl):
+    __dialect__ = "snowflake"
+
 
 load_dotenv()
 # this is the Alembic Config object, which provides
@@ -26,7 +33,9 @@ target_metadata = metadata
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
 
-config.set_main_option("sqlalchemy.url", getenv("DATABASE_URI", config.get_main_option("sqlalchemy.url")))
+config.set_main_option(
+    "sqlalchemy.url", getenv("DATABASE_URI", config.get_main_option("sqlalchemy.url"))
+)
 
 
 def run_migrations_offline():
@@ -68,7 +77,10 @@ def run_migrations_online():
 
     with connectable.connect() as connection:
         context.configure(
-            connection=connection, target_metadata=target_metadata, compare_type=True, render_as_batch=True
+            connection=connection,
+            target_metadata=target_metadata,
+            compare_type=True,
+            render_as_batch=True,
         )
 
         with context.begin_transaction():
