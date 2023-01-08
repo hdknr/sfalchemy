@@ -1,4 +1,10 @@
 # Database migration sample
+sample/alembic_migrate/env.py:
+
+~~~py
+
+
+~~~
 
 ## Schema 
 
@@ -58,3 +64,42 @@ desc category;
 | memo     | varchar(100) | YES  |     | NULL    |       |
 +----------+--------------+------+-----+---------+-------+
 ~~~
+
+
+## Migration to Snowflake
+
+sample/alembic_migrate/env.py:
+
+~~~py
+...
+
+from alembic.ddl.impl import DefaultImpl
+
+class SnowflakeImpl(DefaultImpl):
+    __dialect__ = "snowflake"
+
+...
+~~~
+
+samples/.env:
+
+~~~ini
+SNOW_TICKIT_URL=snowflake://hdknr:PASSWORD@LOCATOR.ap-northeast-1.aws/TICKIT/TICKIT?warehouse=COMPUTE_WH&role=ACCOUNTADMIN&numpy=True
+~~~
+
+~~~bash
+% modelgen migrate upgrade head -p $SNOW_TICKIT_URL
+~~~
+
+
+~~~bash
+% python ../sfalchemy/run.py query-df sql/snowflake/show_tables.sql -u SNOW_TICKIT_URL
+~~~
+
+
+| name            | database_name | schema_name | kind  |
+| --------------- | ------------- | ----------- | ----- |
+| ALEMBIC_VERSION | TICKIT        | TICKIT      | TABLE |
+| CATEGORY        | TICKIT        | TICKIT      | TABLE |
+| USERS           | TICKIT        | TICKIT      | TABLE |
+| VENUE           | TICKIT        | TICKIT      | TABLE |
