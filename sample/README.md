@@ -105,8 +105,13 @@ SNOW_TICKIT_URL=snowflake://hdknr:PASSWORD@LOCATOR.ap-northeast-1.aws/TICKIT/TIC
 | VENUE           | TICKIT        | TICKIT      | TABLE |
 
 
-## notic
+## Notice
 
 ### primary keys
 
 - primary key constraints were not detected. manually edit `primary_key=True` attribute.
+
+
+### `scheme` parameter
+
+- drop all `schema` parameters from `tickit.py` if migrate to other database architectures.
