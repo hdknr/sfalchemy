@@ -115,3 +115,12 @@ SNOW_TICKIT_URL=snowflake://hdknr:PASSWORD@LOCATOR.ap-northeast-1.aws/TICKIT/TIC
 ### `scheme` parameter
 
 - drop all `schema` parameters from `tickit.py` if migrate to other database architectures.
+
+### `psycopg2` default schema
+
+- https://stackoverflow.com/questions/9298296/sqlalchemy-support-of-postgres-schemas
+- DSN url : add `?options=-csearch_path%3DDEFAULT_SCHEMA_NAME`
+
+`tickit` schema sample:
+
+    redshift+psycopg2://admin:secrete_admin_password@samplegroup.893790657933.ap-northeast-1.redshift-serverless.amazonaws.com:5439/sample_data_dev?options=-csearch_path%3Dtickit
