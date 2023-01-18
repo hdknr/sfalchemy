@@ -103,3 +103,10 @@ SNOW_TICKIT_URL=snowflake://hdknr:PASSWORD@LOCATOR.ap-northeast-1.aws/TICKIT/TIC
 | CATEGORY        | TICKIT        | TICKIT      | TABLE |
 | USERS           | TICKIT        | TICKIT      | TABLE |
 | VENUE           | TICKIT        | TICKIT      | TABLE |
+
+
+## notic
+
+### primary keys
+
+- primary key constraints were not detected. manually edit `primary_key=True` attribute.
