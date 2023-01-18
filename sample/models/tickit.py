@@ -20,7 +20,7 @@ metadata = MetaData()
 t_category = Table(
     "category",
     metadata,
-    Column("catid", SmallInteger, nullable=False),
+    Column("catid", SmallInteger, primary_key=True, nullable=False),
     Column("catgroup", String(10)),
     Column("catname", String(10)),
     Column("catdesc", String(50)),
@@ -31,7 +31,7 @@ t_category = Table(
 t_date = Table(
     "date",
     metadata,
-    Column("dateid", SmallInteger, nullable=False),
+    Column("dateid", SmallInteger, primary_key=True, nullable=False),
     Column("caldate", Date, nullable=False),
     Column("day", CHAR(3), nullable=False),
     Column("week", SmallInteger, nullable=False),
@@ -45,7 +45,7 @@ t_date = Table(
 t_event = Table(
     "event",
     metadata,
-    Column("eventid", Integer, nullable=False),
+    Column("eventid", Integer, primary_key=True, nullable=False),
     Column("venueid", SmallInteger, nullable=False),
     Column("catid", SmallInteger, nullable=False),
     Column("dateid", SmallInteger, nullable=False),
@@ -57,7 +57,7 @@ t_event = Table(
 t_listing = Table(
     "listing",
     metadata,
-    Column("listid", Integer, nullable=False),
+    Column("listid", Integer, primary_key=True, nullable=False),
     Column("sellerid", Integer, nullable=False),
     Column("eventid", Integer, nullable=False),
     Column("dateid", SmallInteger, nullable=False),
@@ -71,7 +71,7 @@ t_listing = Table(
 t_sales = Table(
     "sales",
     metadata,
-    Column("salesid", Integer, nullable=False),
+    Column("salesid", Integer, primary_key=True, nullable=False),
     Column("listid", Integer, nullable=False),
     Column("sellerid", Integer, nullable=False),
     Column("buyerid", Integer, nullable=False),
@@ -87,7 +87,7 @@ t_sales = Table(
 t_users = Table(
     "users",
     metadata,
-    Column("userid", Integer, nullable=False),
+    Column("userid", Integer, primary_key=True, nullable=False),
     Column("username", CHAR(8)),
     Column("firstname", String(30)),
     Column("lastname", String(30)),
@@ -111,7 +111,7 @@ t_users = Table(
 t_venue = Table(
     "venue",
     metadata,
-    Column("venueid", SmallInteger, nullable=False),
+    Column("venueid", SmallInteger, primary_key=True, nullable=False),
     Column("venuename", String(100)),
     Column("venuecity", String(30)),
     Column("venuestate", CHAR(2)),
