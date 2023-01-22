@@ -86,3 +86,11 @@ web/upload
 # secrets
 secrets
 .secrets
+
+
+# terraform
+.terraform
+terraform.d
+node_modules
+terraform.tfstate*
+*.plan
