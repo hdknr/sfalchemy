@@ -73,3 +73,9 @@ ALTER STORAGE INTEGRATION shaper_datastage SET STORAGE_AWS_ROLE_ARN = 'arn:aws:i
 ~~~sql
 ALTER STORAGE INTEGRATION shaper_datastage SET STORAGE_ALLOWED_LOCATIONS = ('s3://dwh-proto-role-datastage/');
 ~~~
+
+
+
+## Articles
+
+- https://dev.classmethod.jp/articles/snowflake-storage-integration-s3load/
