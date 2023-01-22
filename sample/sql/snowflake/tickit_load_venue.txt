@@ -1,0 +1,3 @@
+COPY INTO VENUE(venueid, venuename, venuecity, venuestate,venueseats)
+  FROM (SELECT $1:venueid, $1:venuename, $1:venuecity, $1:venuestate, $1:venueseats FROM @tickt_s3_stage)
+  FILE_FORMAT = (TYPE = JSON, COMPRESSION=NONE, STRIP_OUTER_ARRAY=TRUE) ;
