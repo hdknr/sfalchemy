@@ -1,0 +1,3 @@
+create stage tickt_s3_stage
+  storage_integration = shaper_datastage
+  url = 's3://dwh-proto-datastage/snowflake/';
