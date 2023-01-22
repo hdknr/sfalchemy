@@ -1,0 +1,1 @@
+grant create stage on schema tickit to role ACCOUNTADMIN;
